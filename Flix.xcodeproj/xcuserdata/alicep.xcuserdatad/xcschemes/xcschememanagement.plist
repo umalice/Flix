@@ -7,7 +7,25 @@
 		<key>Flix.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>1E98259C20E3FDC000C57C73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E9825B420E3FDC000C57C73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E9825BF20E3FDC000C57C73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
