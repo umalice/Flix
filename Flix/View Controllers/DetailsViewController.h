@@ -11,5 +11,7 @@
 @interface DetailsViewController : UIViewController
 
 @property (nonatomic, strong) NSDictionary *movie;
+@property (nonatomic, strong) NSArray *trailerData;
+@property (nonatomic, strong) NSString *urlKey;
 
 @end

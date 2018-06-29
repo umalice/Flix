@@ -10,6 +10,8 @@
 		1E50EEEB20E58419008CC9C1 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E50EEEA20E58419008CC9C1 /* MoviesGridViewController.m */; };
 		1E50EEEE20E5856E008CC9C1 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E50EEED20E5856E008CC9C1 /* MovieCollectionCell.m */; };
 		1E50EEF420E59B2F008CC9C1 /* AllGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E50EEF320E59B2F008CC9C1 /* AllGridViewController.m */; };
+		1E50EEF920E5B948008CC9C1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E50EEF820E5B948008CC9C1 /* WebKit.framework */; };
+		1E50EF0820E6DBE6008CC9C1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E50EF0720E6DBE6008CC9C1 /* WebViewController.m */; };
 		1E9825A220E3FDC000C57C73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9825A120E3FDC000C57C73 /* AppDelegate.m */; };
 		1E9825A820E3FDC000C57C73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E9825A620E3FDC000C57C73 /* Main.storyboard */; };
 		1E9825AA20E3FDC000C57C73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E9825A920E3FDC000C57C73 /* Assets.xcassets */; };
@@ -50,6 +52,9 @@
 		1E50EEED20E5856E008CC9C1 /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
 		1E50EEF220E59B2F008CC9C1 /* AllGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllGridViewController.h; sourceTree = "<group>"; };
 		1E50EEF320E59B2F008CC9C1 /* AllGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllGridViewController.m; sourceTree = "<group>"; };
+		1E50EEF820E5B948008CC9C1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		1E50EF0620E6DBE6008CC9C1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		1E50EF0720E6DBE6008CC9C1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1E9825A020E3FDC000C57C73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1E9825A120E3FDC000C57C73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1E9825A720E3FDC000C57C73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E50EEF920E5B948008CC9C1 /* WebKit.framework in Frameworks */,
 				7C8E5496F415BCD8C6A5468A /* libPods-Flix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +174,8 @@
 				1E50EEEA20E58419008CC9C1 /* MoviesGridViewController.m */,
 				1E50EEF220E59B2F008CC9C1 /* AllGridViewController.h */,
 				1E50EEF320E59B2F008CC9C1 /* AllGridViewController.m */,
+				1E50EF0620E6DBE6008CC9C1 /* WebViewController.h */,
+				1E50EF0720E6DBE6008CC9C1 /* WebViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 		B358543BE6EDD5CEF2A67B7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E50EEF820E5B948008CC9C1 /* WebKit.framework */,
 				AA31ADE11B3304887B86D67C /* libPods-Flix.a */,
 				A1BD9343FD68186611DBA566 /* libPods-FlixTests.a */,
 				08A03F5B931DAA2212C706DE /* libPods-FlixUITests.a */,
@@ -407,6 +416,7 @@
 				1E9825B020E3FDC000C57C73 /* main.m in Sources */,
 				1E98262D20E4696900C57C73 /* DetailsViewController.m in Sources */,
 				1E9825A220E3FDC000C57C73 /* AppDelegate.m in Sources */,
+				1E50EF0820E6DBE6008CC9C1 /* WebViewController.m in Sources */,
 				1E50EEEE20E5856E008CC9C1 /* MovieCollectionCell.m in Sources */,
 				1E98262A20E44D3900C57C73 /* MovieCell.m in Sources */,
 				1E9825D420E40CF500C57C73 /* MoviesViewController.m in Sources */,

@@ -98,15 +98,33 @@
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
     NSDictionary *movie = self.movies[indexPath.item];
+    NSString *urlString = [NSString stringWithFormat:@"https://image.tmdb.org/t/p/w500/%@", movie[@"poster_path"]];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
-    
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
+    __weak MovieCollectionCell *weakSelf = cell;
+    [cell.posterView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+        
+        // imageResponse will be nil if the image is cached
+        if (imageResponse) {
+            NSLog(@"Image was NOT cached, fade in image");
+            weakSelf.posterView.alpha = 0.0;
+            weakSelf.posterView.image = image;
+            
+            //Animate UIImageView back to alpha 1 over 1sec
+            [UIView animateWithDuration:1 animations:^{
+                weakSelf.posterView.alpha = 1.0;
+            }];
+        }
+        else {
+            NSLog(@"Image was cached so just update the image");
+            weakSelf.posterView.image = image;
+        }
+    }
+    failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+    // do something for the failure condition
+    }];
+
     
     return cell;
     

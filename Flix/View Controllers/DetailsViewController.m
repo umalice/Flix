@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "WebViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backdropView;
@@ -15,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+
 
 @end
 
@@ -47,6 +50,27 @@
     CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height + 10;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, maxHeight);
     
+    NSString *networkString = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US", self.movie[@"id"]];
+    NSURL *networkURL = [NSURL URLWithString:networkString];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:networkURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //called after network call is finished
+        if (error != nil) {
+            
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        else {
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            self.trailerData = dataDictionary[@"results"];
+            
+        }
+    }];
+    
+    [task resume];
     
 }
 
@@ -55,14 +79,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    NSDictionary *trailer = self.trailerData[0];
+    self.urlKey = trailer[@"key"];
+    WebViewController *nextViewController = [segue destinationViewController];
+    
+    nextViewController.key = self.urlKey;
+    
+
+    
 }
-*/
 
 @end
