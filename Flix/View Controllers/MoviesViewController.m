@@ -38,6 +38,7 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
 }
 
 - (void)fetchMovies {
@@ -51,6 +52,19 @@
         
         //called after network call is finished
         if (error != nil) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot get movies"
+                                                                           message:@"The Internet connection appears to be offline."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try again"
+                                                                     style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                                       [self fetchMovies];
+                                                                   }];
+            [alert addAction:tryAgainAction];
+            
+            [self  presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
             NSLog(@"%@", [error localizedDescription]);
         }
         else {
