@@ -39,7 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/c3a5AKr.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+See repo for "Flix walkthrough"
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
