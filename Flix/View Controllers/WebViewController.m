@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSString *urlString = [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", self.key];
 
     NSURL *url = [NSURL URLWithString:urlString];

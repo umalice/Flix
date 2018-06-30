@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGesture;
+@property (weak, nonatomic) IBOutlet UILabel *voteLabel;
 
 
 @end
@@ -46,6 +47,9 @@
     
     self.synopsisLabel.text = self.movie[@"overview"];
     [self.synopsisLabel sizeToFit];
+    
+    NSString *vote = [NSString stringWithFormat:@"%@", self.movie[@"vote_average"]];
+    self.voteLabel.text = vote;
     
     CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height + 10;
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, maxHeight);
@@ -87,11 +91,13 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    NSDictionary *trailer = self.trailerData[0];
-    self.urlKey = trailer[@"key"];
-    WebViewController *nextViewController = [segue destinationViewController];
+
     
-    nextViewController.key = self.urlKey;
+    WebViewController *nextViewController = [segue destinationViewController];
+    NSDictionary *trailer = self.trailerData[0];
+        self.urlKey = trailer[@"key"];
+      nextViewController.key = self.urlKey;
+    
     
 }
 
